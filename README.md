@@ -404,7 +404,9 @@ We copy the url address provided for use later.
 
 4.After depositing,click the compass Icon just below your balance in the minipay homepage and scroll down in the discover page that opens and select Site tester.
 
-5.Paste the project url/address we copied earlier and click Go.
+5.Paste the project url/address we copied earlier and click Go.For this tutorial you can use the link in this tutorial description or this
+
+[https://minicash-app-react-app.vercel.app/](https://minicash-app-react-app.vercel.app/)
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/d0e706d3-1030-46e6-8ecf-45948448e0a8)
 
