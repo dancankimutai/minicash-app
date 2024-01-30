@@ -25,19 +25,19 @@
 
 - [Celo Composer](#celo-composer)
 
-- [Build the withdraw component](#introduction)
+- [Build the withdraw component](#build-the-withdraw-component)
 
-- [Building the UI](#introduction)
+- [Building the UI](#building-the-ui)
 
-   -  [Building the header component](#introduction)
+   -  [Building the header component](#building-the-header-component)
 
-   -  [Creating a button component](#introduction)
+   -  [Creating a button component](#creating-a-button-component)
  
-   - [Building the home component](#introduction)
+   - [Building the home component](#building-the-home-component)
 
-- [Testing our app](#introduction)
+- [Testing our app](#testing-our-app)
 
-   -  [Instructions to test the app on Minipay](#introduction)
+   -  [Instructions to test the app on Minipay](#instructions-to-test-the-app-on-minipay)
 
 - [Conclusion](#conclusion)
 
