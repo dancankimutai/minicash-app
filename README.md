@@ -17,10 +17,29 @@
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
+## TABLE OF CONTENTS 
 
--[Introduction](#introduction)
--[Introduction](#conclusion)
+- [Introduction](#introduction)
+
+- [Tech Stack](#tech-stack)
+
+- [Celo Composer](#celo-composer)
+
+- [Build the withdraw component](#introduction)
+
+- [Building the UI](#introduction)
+
+   -  [Building the header component](#introduction)
+
+   -  [Creating a button component](#introduction)
+ 
+   - [Building the home component](#introduction)
+
+- [Testing our app](#introduction)
+
+   -  [Instructions to test the app on Minipay](#introduction)
+
+- [Conclusion](#conclusion)
 
 ### Tech Stack
 <p>Here’s the stack that we will be working with:
@@ -369,7 +388,7 @@ Personally am using gitpod which is an online dev envronment and when i run yarn
 
 We copy the url address provided for use later.
 
-### Instructions to test the app
+### Instructions to test the app on Minipay
 
 1.Install Operamini Browser from the app store.
 
