@@ -382,7 +382,7 @@ Ou localhost page should now look like this on our browser:
 ## Testing our app
 
 To test our app we must put it online by creating a forwarding url,you can use a free tool like ngrok. It'sInstructions can be found here:
-![https://ngrok.com/docs/getting-started/](https://ngrok.com/docs/getting-started/)
+[https://ngrok.com/docs/getting-started/](https://ngrok.com/docs/getting-started/)
 
 Personally am using gitpod which is an online dev environment.When i run yarn dev it prompts me to either leave the service on the port private or make it public so that I can access it over another device via a url and I do so.
 
