@@ -24,6 +24,8 @@
 - [Tech Stack](#tech-stack)
 
 - [Celo Composer](#celo-composer)
+  
+- [Bootstrap the Application](#bootstrap-the-application)
 
 - [Build the withdraw component](#build-the-withdraw-component)
 
@@ -61,12 +63,12 @@ npx @celo/celo-composer create
 
 ![Screenshot from 2024-01-30 10-38-35](https://github.com/dancankimutai/minicash-app/assets/59916500/264a0ad5-497c-43cb-926d-884b2a7daca1)
 
-2. Move to the projects root directory and run yarn or npm install to install the dependencies required in the project,in my case am using yarn.
+2. Move to the projects root directory and run `yarn` or `npm install` to install the dependencies required in the project,in my case am using yarn.
 
 ![Screenshot from 2024-01-30 10-40-44](https://github.com/dancankimutai/minicash-app/assets/59916500/6ea9290d-da64-474b-8f33-5d825ea57df1)
 
 3. Then open the app in your code editor of choice,if visual studio code type `code .` in the project’s root directory to launch vs code.
-Change directory in your terminal and run yarn dev to check if there is anything else we may need.
+Change directory in your terminal and run `yarn dev` to check if there is anything else we may need.
 
 ![Screenshot from 2024-01-30 11-00-55](https://github.com/dancankimutai/minicash-app/assets/59916500/821c00f5-c762-4e58-b780-70762d806b1e)
 
@@ -78,11 +80,11 @@ Change directory in your terminal and run yarn dev to check if there is anything
 
 `*const* projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID as *string*; // get one at https://cloud.walletconnect.com/app`
 
-6. We thus visit the url and create an account and create a project id by typing the name of your app and on type select app then click create as shown below.
+6. We thus visit the url and create an account.We then create a project id by typing the name of our app and on type select app then click create as shown below.
 
 ![Screenshot from 2024-01-30 10-59-10](https://github.com/dancankimutai/minicash-app/assets/59916500/7b09cae5-b63a-46ba-9a71-5911c4d45525)
 
-7. Copy your project id from here:
+7. We then copy the project id that is generated:
    
 ![Screenshot from 2024-01-30 11-08-21](https://github.com/dancankimutai/minicash-app/assets/59916500/aae31475-1ad8-4497-b093-8d8b21f744c1)
 
@@ -364,7 +366,7 @@ Let's break down the code:
     - `transactionStatus` and `setTransactionStatus` to track the status of the withdrawal transaction.
 3. The `useAccount` hook is called, which retrieves the user's blockchain account information.
 4. A `useEffect` hook is used to update `userAddress` whenever `address` or `isConnected` changes. If the user is connected and an address is available, `userAddress` is set to `address`.
-5. The `handleWithdraw` function is declared. This asynchronous function sets `loading` to `true`, calls `transferCUSD` to perform the withdrawal, updates `transactionStatus` to `"complete"` if the operation is successful, and displays a success message using `toast.success`. If an error occurs, an error message is displayed using `toast.error`. Regardless of the outcome, `loading` is set to `false` at the end. This ensures that when withdrawal is occurring the button will display a spinning animation and display sending and when its complete it returns to normal and allows the user to withdraw again.
+5. The `handleWithdraw` function is declared. This function sets `loading` to `true`, calls `transferCUSD` to perform the withdrawal, updates `transactionStatus` to `"complete"` if the operation is successful, and displays a success message using `toast.success`. If an error occurs, an error message is displayed using `toast.error`. Regardless of the outcome, `loading` is set to `false` at the end. This ensures that when withdrawal is occurring the button will display a spinning animation and display sending and when its complete it returns to normal and allows the user to withdraw again.
 6. We then create the input fields for the address and amount.
 
 In summary the code sets up a connection to the Celo blockchain using the user's minipay wallet, allows the user to input withdrawal details, and performs the withdrawal operation when the user clicks the button.
@@ -379,10 +381,10 @@ Ou localhost page should now look like this on our browser:
 
 ## Testing our app
 
-To test our app we must put it online by creating a forwarding url,you can use a free tool like ngrok.Instructions here
+To test our app we must put it online by creating a forwarding url,you can use a free tool like ngrok. It'sInstructions can be found here:
 ![https://ngrok.com/docs/getting-started/](https://ngrok.com/docs/getting-started/)
 
-Personally am using gitpod which is an online dev envronment and when i run yarn dev it prompts me to either make the service on the port public so that i can access it over another device via a url and i do so.
+Personally am using gitpod which is an online dev environment.When i run yarn dev it prompts me to either leave the service on the port private or make it public so that I can access it over another device via a url and I do so.
 
 ![Screenshot from 2024-01-30 12-51-21](https://github.com/dancankimutai/minicash-app/assets/59916500/e1c25420-ff74-473a-8bc2-6f306e40514a)
 
@@ -394,7 +396,7 @@ We copy the url address provided for use later.
 
 2.Open it and at the bottom click on the opera logo and click MiniPay in the menu that appears.
 
-3.If you don't have an account create one and load CUSD tokens to your Minipay using the various options provided in [MiniPay.You](http://MiniPay.You) can even deposit from valora or another crypto wallet.If having cahllenges finding the add cash button,at the page below swipe down to find it.
+3.If you don't have an account create one and load CUSD tokens to your Minipay using the various options provided in MiniPay.You can even deposit from valora or another crypto wallet.If having challenges finding the add cash button,at the page below swipe down from the part of your screen below your balance to find it.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/0dfecbd3-0e13-406d-bfcd-240db15f3222)
 
