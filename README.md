@@ -432,6 +432,6 @@ We copy the url address provided for use later.
 
 Congratulations! you have learned how to build an app that withdraws cusd tokens from Minipay wallet.
 
-By the end, you’ve had the skills and knowledge needed to build a functional Minipay withdrawal application on your own and test that it works.
+Now you have the skills and knowledge needed to build a functional Minipay withdrawal application on your own and test that it works.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
