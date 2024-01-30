@@ -56,5 +56,50 @@ The easiest way to start with Celo Composer is using `@celo/celo-composer`. This
 ## Celo Composer
 Bootstrap the application using this Celo Composer command.
 
-```npx @celo/celo-composer create```
+``` sh 
+npx @celo/celo-composer create
+```
+<p>Select the below choices as you move through each option and rename the app with a name of your choice.</p>
+![Screenshot from 2024-01-30 10-38-35](https://github.com/dancankimutai/minicash-app/assets/59916500/264a0ad5-497c-43cb-926d-884b2a7daca1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
