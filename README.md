@@ -52,7 +52,7 @@
 -   [Typescript](https://www.typescriptlang.org/)
 ## Celo Composer
 
-The easiest way to start with Celo Composer is using `@celo/celo-composer`. This CLI tool lets you quickly start building dApps on Celo for multiple frameworks, including React (with either react-celo or rainbowkit-celo), React Native (w/o Expo), Flutter, and Angular.In our case, we will work with react, specifically NextJS.
+The easiest way to start with Celo Composer is using `@celo/celo-composer`. This CLI tool lets you quickly start building dApps on Celo for multiple frameworks, including React (with either react-celo or rainbowkit-celo), React Native (w/o Expo), Flutter, and Angular. In our case, we will work with React, specifically NextJS.
 ## Bootstrap the Application
 Bootstrap the application using this Celo Composer command.
 
@@ -63,28 +63,28 @@ npx @celo/celo-composer create
 
 ![Screenshot from 2024-01-30 10-38-35](https://github.com/dancankimutai/minicash-app/assets/59916500/264a0ad5-497c-43cb-926d-884b2a7daca1)
 
-2. Move to the projects root directory and run `yarn` or `npm install` to install the dependencies required in the project,in my case am using yarn.
+2. Move to the project's root directory and run `yarn` or `npm install` to install the dependencies required in the project, in my case am using yarn.
 
 ![Screenshot from 2024-01-30 10-40-44](https://github.com/dancankimutai/minicash-app/assets/59916500/6ea9290d-da64-474b-8f33-5d825ea57df1)
 
-3. Then open the app in your code editor of choice,if visual studio code type `code .` in the project’s root directory to launch vs code.
-Change directory in your terminal and run `yarn dev` to check if there is anything else we may need.
+3. Then open the app in your code editor of choice, if visual studio code type `code .` in the project’s root directory to launch vs code.
+Change the directory in your terminal and run `yarn dev` to check if there is anything else we may need.
 
 ![Screenshot from 2024-01-30 11-00-55](https://github.com/dancankimutai/minicash-app/assets/59916500/821c00f5-c762-4e58-b780-70762d806b1e)
 
-4. Visit the localhost url displayed there in your browser to view our rendered app.We find this error.
+4. Visit the localhost URL displayed there in your browser to view our rendered app. We find this error.
    
 ![Screenshot from 2024-01-30 11-01-26](https://github.com/dancankimutai/minicash-app/assets/59916500/81d0c7a2-8c3c-40d8-a50e-03db9368696b)
 
-5. We visit out `_app.tsx` file and find:
+5. We visit our `_app.tsx` file and find:
 
 `*const* projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID as *string*; // get one at https://cloud.walletconnect.com/app`
 
-6. We thus visit the url and create an account.We then create a project id by typing the name of our app and on type select app then click create as shown below.
+6. We thus visit the URL and create an account. We then create a project ID by typing the name of our app and on type select the app then click Create as shown below.
 
 ![Screenshot from 2024-01-30 10-59-10](https://github.com/dancankimutai/minicash-app/assets/59916500/7b09cae5-b63a-46ba-9a71-5911c4d45525)
 
-7. We then copy the project id that is generated:
+7. We then copy the project ID that is generated:
    
 ![Screenshot from 2024-01-30 11-08-21](https://github.com/dancankimutai/minicash-app/assets/59916500/aae31475-1ad8-4497-b093-8d8b21f744c1)
 
@@ -228,7 +228,7 @@ declare global {
     
 3. The `useEffect` hook is used to perform side effects in function components. It takes two arguments: a function and an array of dependencies. The function will run after the render is committed to the screen.
     
-    The `useEffect` hook here checks if `window.ethereum` exists and if `window.ethereum.isMiniPay` is true. If both conditions are met, it sets `hideConnectBtn` to `true` and calls the `connect` function. This makes it that if the webpage is opened in a MiniPay browser, the "Connect" button should be hidden and the connection to the blockchain should be established automatically.This ensures that when we open our app in minipay testpage later on it will not show the connect button in there but will automatically be connected in the background.
+    The `useEffect` hook here checks if `window.ethereum` exists and if `window.ethereum.isMiniPay` is true. If both conditions are met, it sets `hideConnectBtn` to `true` and calls the `connect` function. This means that if the webpage is opened in a MiniPay browser, the "Connect" button should be hidden and the connection to the blockchain should be established automatically. This ensures that when we open our app in the minipay test page later on it will not show the connect button in there but will automatically be connected in the background.
     
 4. The dependency array for `useEffect` contains `connect`. This means the effect will re-run whenever `connect` changes. this `useEffect` will likely only run once after the initial render, and then whenever `window.ethereum` or `window.ethereum.isMiniPay` changes.
 
@@ -322,7 +322,7 @@ export default function Home() {
     <div className="flex flex-cot justify-center items-center w-full">
       <div className="-full flex flex-col justify-center items-start px-7">
         <p className="mx-auto max-w-xl text-lg text-slate-700 leading-8 font-semibold">
-          Withdraw CUSD tokens from Minipay to your CUSD compatible wallet address for free.
+          Withdraw CUSD tokens from Minipay to your CUSD-compatible wallet address for free.
         </p>
         {/* text input field to get the withdrawal address from the user. */}
         <input
@@ -332,7 +332,7 @@ export default function Home() {
           onChange={(e) => setExternalAddress(e.target.value)}
           className="border -b border-black mt-5 mb-8 rounded-lg w-full h-11 text-center"
         />
-        {/*text input field  to get the amount from the user. */}
+        {/*text input field to get the amount from the user. */}
         <input
           type="number"
           placeholder="  Enter Amount e.g 1"
@@ -366,10 +366,10 @@ Let's break down the code:
     - `transactionStatus` and `setTransactionStatus` to track the status of the withdrawal transaction.
 3. The `useAccount` hook is called, which retrieves the user's blockchain account information.
 4. A `useEffect` hook is used to update `userAddress` whenever `address` or `isConnected` changes. If the user is connected and an address is available, `userAddress` is set to `address`.
-5. The `handleWithdraw` function is declared. This function sets `loading` to `true`, calls `transferCUSD` to perform the withdrawal, updates `transactionStatus` to `"complete"` if the operation is successful, and displays a success message using `toast.success`. If an error occurs, an error message is displayed using `toast.error`. Regardless of the outcome, `loading` is set to `false` at the end. This ensures that when withdrawal is occurring the button will display a spinning animation and display sending and when its complete it returns to normal and allows the user to withdraw again.
+5. The `handleWithdraw` function is declared. This function sets `loading` to `true`, calls `transferCUSD` to perform the withdrawal, updates `transactionStatus` to `"complete"` if the operation is successful, and displays a success message using `toast.success`. If an error occurs, an error message is displayed using `toast.error`. Regardless of the outcome, `loading` is set to `false` at the end. This ensures that when the withdrawal is occurring the button will display a spinning animation and display sending and when it's complete it returns to normal and allows the user to withdraw again.
 6. We then create the input fields for the address and amount.
 
-In summary the code sets up a connection to the Celo blockchain using the user's minipay wallet, allows the user to input withdrawal details, and performs the withdrawal operation when the user clicks the button.
+In summary, the code sets up a connection to the Celo blockchain using the user's minipay wallet, allows the user to input withdrawal details, and performs the withdrawal operation when the user clicks the button.
 
 If you get an error that react-toastify isn’t installed you can install it by running 
 ``` sh
@@ -381,48 +381,48 @@ Ou localhost page should now look like this on our browser:
 
 ## Testing our app
 
-To test our app we must put it online by creating a forwarding url,you can use a free tool like ngrok. It'sInstructions can be found here:
+To test our app we must put it online by creating a forwarding URL, you can use a free tool like ngrok. It'sInstructions can be found here:
 [https://ngrok.com/docs/getting-started/](https://ngrok.com/docs/getting-started/)
 
-Personally am using gitpod which is an online dev environment.When i run yarn dev it prompts me to either leave the service on the port private or make it public so that I can access it over another device via a url and I do so.
+Personally am using gitpod which is an online dev environment. When I run yarn dev it prompts me to either leave the service on the port private or make it public so that I can access it over another device via a URL and I do so.
 
 ![Screenshot from 2024-01-30 12-51-21](https://github.com/dancankimutai/minicash-app/assets/59916500/e1c25420-ff74-473a-8bc2-6f306e40514a)
 
-We copy the url address provided for use later.
+We copy the URL address provided for use later.
 
 ### Instructions to test the app on Minipay
 
-1.Install Operamini Browser from the app store.
+1. Install Opera mini Browser from the app store.
 
-2.Open it and at the bottom click on the opera logo and click MiniPay in the menu that appears.
+2. Open it and at the bottom click on the opera logo and click MiniPay in the menu that appears.
 
-3.If you don't have an account create one and load CUSD tokens to your Minipay using the various options provided in MiniPay.You can even deposit from valora or another crypto wallet.If having challenges finding the add cash button,at the page below swipe down from the part of your screen below your balance to find it.
+3. If you don't have an account create one and load CUSD tokens to your Minipay using the various options provided in MiniPay.You can even deposit from valora or another crypto wallet. If having challenges finding the add cash button, at the page below swipe down from the part of your screen below your balance to find it.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/0dfecbd3-0e13-406d-bfcd-240db15f3222)
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/39ccd211-e3bb-4138-aff9-0ad7d2bdc19c)
 
-4.After depositing,click the compass Icon just below your balance in the minipay homepage and scroll down in the discover page that opens and select Site tester.
+4. After depositing, click the compass Icon just below your balance on the minipay homepage scroll down to the Discover page that opens, and select Site Tester.
 
-5.Paste the project url/address we copied earlier and click Go.For this tutorial you can use the link in this tutorial description or this
+5. Paste the project URL/address we copied earlier and click Go. For this tutorial, you can use the link in this tutorial description or this
 
 [https://minicash-app-react-app.vercel.app/](https://minicash-app-react-app.vercel.app/)
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/d0e706d3-1030-46e6-8ecf-45948448e0a8)
 
-6.Minicash application launches and showcases two input boxes. for entering withdrawal/receipient address and amount to be withdrawn.
+6. Minicash application launches and showcases two input boxes. for entering the withdrawal/recipient address and amount to be withdrawn.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/d9f69ca1-4d1e-4677-8343-18e3f4b2d437)
 
-7.Enter your CUSD compatible address and amount you want to withdraw from Minipay and click Withdraw CUSD.
+7. Enter your CUSD-compatible address and the amount you want to withdraw from Minipay and click Withdraw CUSD.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/85152c37-730e-4fd2-ba80-ff7c44726c3d)
 
-8.A pop up shows to authorize it using your fingerprint and after okaying the transaction starts processing.
+8. A pop-up shows to authorize it using your fingerprint and after okaying the transaction starts processing.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/876f9bfa-932e-4308-a8f4-3e5928603dda)
 
-9.After sending it will display Withdrawal complete at which point you can even go and confirm in your wallet that the tokens have been received.
+9. After sending it will display Withdrawal complete at which point you can even go and confirm in your wallet that the tokens have been received.
 
 ![image](https://github.com/dancankimutai/minicash-app/assets/59916500/20608c4f-0690-4477-9065-01dfa28ca10e)
 
@@ -430,7 +430,7 @@ We copy the url address provided for use later.
 
 ## Conclusion
 
-Congratulations! you have learned how to build an app that withdraws cusd tokens from Minipay wallet.
+Congratulations! You have learned how to build an app that withdraws CUSD tokens from a Minipay wallet.
 
 Now you have the skills and knowledge needed to build a functional Minipay withdrawal application on your own and test that it works.
 
