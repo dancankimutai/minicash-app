@@ -20,50 +20,55 @@ export default function Home() {
 
   const handleWithdraw = async () => {
     setLoading(true);
+
     try {
       await transferCUSD(externalAddress, address as string, amount);
-      setTransactionStatus("complete"); // Mark transaction as complete
-      toast.success("Withdrawal successful!"); // Show a success message
+      setTransactionStatus("complete");
+      toast.success("Withdrawal successful!");
     } catch (error) {
-      toast.error("Withdrawal failed. Please try again."); // Show an error message
+      toast.error("Withdrawal failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-cot justify-center items-center w-full">
-      <div className="-full flex flex-col justify-center items-start px-7">
-        <p className="mx-auto max-w-xl text-lg text-slate-700 leading-8 font-semibold">
-          Withdraw CUSD tokens from Minipay to your CUSD compatible wallet address for free. 
+    <div className="flex flex-col justify-center items-center w-full">
+      <div className="flex flex-col justify-center items-start px-7 max-w-xl text-lg text-slate-700 leading-8 font-semibold">
+        <p>
+          Withdraw CUSD tokens from Minipay to your CUSD compatible wallet address for free.
         </p>
-        {/* text input field  to get the withdrawal address from the user. */}
+
+        {/* Text input field to get the withdrawal address from the user. */}
         <input
           type="text"
-          placeholder="  Enter Withdrawal address"
+          placeholder="Enter Withdrawal address"
           value={externalAddress}
           onChange={(e) => setExternalAddress(e.target.value)}
-          className="border -b border-black mt-5 mb-8 rounded-lg w-full h-11 text-center"
+          className="border-b border-black mt-5 mb-8 rounded-lg w-full h-11 text-center"
         />
-        {/* text input field to get the amount from the user. */}
+
+        {/* Text input field to get the amount from the user. */}
         <input
           type="number"
-          placeholder="  Enter Amount e.g 1"
+          placeholder="Enter Amount e.g 1"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="border -b border-black mb-2 rounded-lg w-full h-11 text-center"
+          className="border-b border-black mb-2 rounded-lg w-full h-11 text-center"
         />
+
         <Button
           loading={loading}
-          text={transactionStatus === "complete" ? "Withdraw CUSD" : "Withdraw CUSD"}        
+          text={transactionStatus === "complete" ? "Withdraw CUSD" : "Withdraw CUSD"}
           onClick={handleWithdraw}
         />
-        {transactionStatus === "complete" && (
-          <div className="mx-auto max-w-xl text-lg text-green-700 leading-8 font-semibold">Withdrawal complete!</div>
-        )}
 
+        {transactionStatus === "complete" && (
+          <div className="mx-auto text-lg text-green-700 leading-8 font-semibold">
+            Withdrawal complete!
+          </div>
+        )}
       </div>
     </div>
-
   );
 }
