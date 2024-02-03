@@ -4,6 +4,17 @@ import Button from "@/components/Button";
 import { transferCUSD } from "@/utils/withdraw";
 import { toast } from 'react-toastify';
 
+const MAX_WITHDRAWAL_AMOUNT = 1000000; // Adjust as needed
+
+const isValidCUSDAddress = (address) => {
+  // Implement CUSD address validation logic
+  // Example: return address.startsWith("CUS");
+};
+
+const isValidAmount = (amount) => {
+  return amount > 0 && amount <= MAX_WITHDRAWAL_AMOUNT;
+};
+
 export default function Home() {
   const [userAddress, setUserAddress] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,50 +31,76 @@ export default function Home() {
 
   const handleWithdraw = async () => {
     setLoading(true);
+
     try {
-      await transferCUSD(externalAddress, address as string, amount);
-      setTransactionStatus("complete"); // Mark transaction as complete
-      toast.success("Withdrawal successful!"); // Show a success message
+      // Sanitize user input
+      const sanitizedExternalAddress = externalAddress.trim();
+
+      // Input validation
+      if (!isValidCUSDAddress(sanitizedExternalAddress)) {
+        toast.error("Invalid CUSD address");
+        return;
+      }
+
+      if (!isValidAmount(Number(amount))) {
+        toast.error("Invalid withdrawal amount");
+        return;
+      }
+
+      // Token transfer logic
+      const transactionId = await transferCUSD(sanitizedExternalAddress, address, Number(amount));
+      
+      setTransactionStatus("complete");
+      toast.success(`Withdrawal successful! Transaction ID: ${transactionId}`);
+      
+      // Clear input fields after success
+      setExternalAddress("");
+      setAmount("");
     } catch (error) {
-      toast.error("Withdrawal failed. Please try again."); // Show an error message
+      // Provide more specific error messages
+      toast.error("Withdrawal failed: " + error.message);
+      // Consider retry logic or user guidance here
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-cot justify-center items-center w-full">
-      <div className="-full flex flex-col justify-center items-start px-7">
+    <div className="flex flex-col justify-center items-center w-full">
+      <div className="flex flex-col justify-center items-start px-7">
         <p className="mx-auto max-w-xl text-lg text-slate-700 leading-8 font-semibold">
           Withdraw CUSD tokens from Minipay to your CUSD compatible wallet address for free. 
         </p>
-        {/* text input field  to get the withdrawal address from the user. */}
+        <label htmlFor="withdrawalAddress">Withdrawal Address</label>
         <input
           type="text"
-          placeholder="  Enter Withdrawal address"
+          id="withdrawalAddress"
+          placeholder="Enter withdrawal address"
           value={externalAddress}
           onChange={(e) => setExternalAddress(e.target.value)}
-          className="border -b border-black mt-5 mb-8 rounded-lg w-full h-11 text-center"
+          className="border-b border-black mt-2 rounded-lg w-full h-11 text-center"
         />
-        {/* text input field to get the amount from the user. */}
+        <label htmlFor="withdrawalAmount">Withdrawal Amount</label>
         <input
           type="number"
-          placeholder="  Enter Amount e.g 1"
+          id="withdrawalAmount"
+          placeholder="Enter amount (e.g., 1)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="border -b border-black mb-2 rounded-lg w-full h-11 text-center"
+          className="border-b border-black mt-2 mb-2 rounded-lg w-full h-11 text-center"
         />
         <Button
           loading={loading}
-          text={transactionStatus === "complete" ? "Withdraw CUSD" : "Withdraw CUSD"}        
+          text={transactionStatus === "complete" ? "Withdrawn" : "Withdraw CUSD"}
           onClick={handleWithdraw}
+          disabled={loading}
         />
         {transactionStatus === "complete" && (
-          <div className="mx-auto max-w-xl text-lg text-green-700 leading-8 font-semibold">Withdrawal complete!</div>
+          <div className="mx-auto max-w-xl text-lg text-green-700 leading-8 font-semibold">
+            Withdrawal complete!
+          </div>
         )}
-
       </div>
     </div>
-
   );
 }
